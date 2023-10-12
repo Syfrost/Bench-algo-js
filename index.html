@@ -3,26 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <title>Title</title>
 </head>
 <body>
-    <header>
-        <h1>Les petits plats</h1>
-        <h2>Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h2>
-        <label class="search">
-            <input class="search__bar" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
-            <button class="search__btn">Loop</button>
+    <header class="header">
+        <img class="header__logo" src="assets/Logo.svg">
+        <h2 class="header__subtitle">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h2>
+        <label class="header__search">
+            <input class="header__search__bar" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+            <button class="header__search__btn"><img src="assets/loop.svg"></button>
         </label>
     </header>
     <main>
         <section class="filter">
-            <h2>Titre</h2>
-            <p>Paragraphe</p>
+            <div class="listbox">
+                <div class="listbox__head">
+                    <span class="listbox__head__title">Ingrédients</span>
+                    <i class="fa-solid fa-chevron-down fa-rotate-180"></i>
+                </div>
+                <div class="listbox__searchbar">
+                    <input class="listbox__searchbar__item" id="search-ingredient" type="text">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="listbox__list">
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">Fruits teest test</span>
+                    <span class="listbox__list__item">coco</span>
+                </div>
+
+
+            </div>
+            <div class="listbox">
+                <div class="listbox__head">
+                    <span class="listbox__head__title">Appareils</span>
+                    <i class="fa-solid fa-chevron-down fa-rotate-180"></i>
+                </div>
+                <div class="listbox__searchbar">
+                    <input class="listbox__searchbar__item" id="search-appareil" type="text">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="listbox__list">
+                    <span class="listbox__list__item">Fruits teest test</span>
+                </div>
+            </div>
+            <div class="listbox">
+                <div class="listbox__head">
+                    <span class="listbox__head__title">Ustensiles</span>
+                    <i class="fa-solid fa-chevron-down fa-rotate-180"></i>
+                </div>
+                <div class="listbox__searchbar">
+                    <input class="listbox__searchbar__item" id="search-ustensiles" type="text">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="listbox__list">
+                    <span class="listbox__list__item">Fruits teest test</span>
+                </div>
+            </div>
+            <span class="filter__number">Rechercher</span>
+        </section>
+        <section class="recipe">
+            <article class="recipe__card fade-in-recipe" id="1" style="--fadeinDelayRecipe: 0.6000000000000001s;">
+                <span class="recipe__card__time">10min</span>
+                <img class="recipe__card__image" src="./assets/recette/Recette01.jpg" alt="Limonade de Coco">
+                <div class="recipe__card__content">
+                    <h2>Limonade de Coco</h2>
+                    <h3>Recette</h3>
+                    <div class="recipe__card__content__description">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
+                    <h3>Ingrédients</h3>
+                    <div class="recipe__card__content__ingredients">
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Lait de coco</h4>
+                            <span>400ml</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Jus de citron</h4>
+                            <span>2</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Crème de coco</h4>
+                            <span>2cuillères à soupe</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Sucre</h4>
+                            <span>30grammes</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Glaçons</h4>
+                            <span>2</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="recipe__card fade-in-recipe" id="2" style="--fadeinDelayRecipe: 0.6000000000000001s;">
+                <span class="recipe__card__time">10min</span>
+                <img class="recipe__card__image" src="./assets/recette/Recette01.jpg" alt="Limonade de Coco">
+                <div class="recipe__card__content">
+                    <h2>Limonade de Coco</h2>
+                    <h3>Recette</h3>
+                    <div class="recipe__card__content__description">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
+                    <h3>Ingrédients</h3>
+                    <div class="recipe__card__content__ingredients">
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Lait de coco</h4>
+                            <span>400ml</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Jus de citron</h4>
+                            <span>2</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Crème de coco</h4>
+                            <span>2cuillères à soupe</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Sucre</h4>
+                            <span>30grammes</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Glaçons</h4>
+                            <span>2</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="recipe__card fade-in-recipe" id="3" style="--fadeinDelayRecipe: 0.6000000000000001s;">
+                <span class="recipe__card__time">10min</span>
+                <img class="recipe__card__image" src="./assets/recette/Recette01.jpg" alt="Limonade de Coco">
+                <div class="recipe__card__content">
+                    <h2>Limonade de Coco</h2>
+                    <h3>Recette</h3>
+                    <div class="recipe__card__content__description">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</div>
+                    <h3>Ingrédients</h3>
+                    <div class="recipe__card__content__ingredients">
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Lait de coco</h4>
+                            <span>400ml</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Jus de citron</h4>
+                            <span>2</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Crème de coco</h4>
+                            <span>2cuillères à soupe</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Sucre</h4>
+                            <span>30grammes</span>
+                        </div>
+                        <div class="recipe__card__content__ingredients__ingredient">
+                            <h4>Glaçons</h4>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </section>
     </main>
     <footer>
-        <p>Footer</p>
+        <a href="https://github.com/Syfrost/Bench-algo-js">OpenClassrooms - P7 - GEORGES Cédric</a>
     </footer>
 </body>
 </html>
