@@ -11,11 +11,18 @@ $black : #1B1B1B;
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 .header {
   display: flex;
   flex-direction: column;
-  background: url("../assets/header.png");
-  max-width: 1440px;
+  background: url("../assets/header.png") no-repeat;
+  background-size: cover;
+  object-fit: cover;
+
   height: 667px;
   &__logo {
     width: 207px;
@@ -61,11 +68,12 @@ $black : #1B1B1B;
       border-radius: 10px;
       border: none;
       margin-left: -60px;
-      img {
-        width: 28px;
-        height: 28px;
-        margin: 0;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $yellow;
       }
+
       :focus {
         outline: none;
       }
@@ -74,17 +82,53 @@ $black : #1B1B1B;
 }
 //filter box
 .filter {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 25px;
+  background: #EDEDED;
+  padding-bottom: 25px;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    padding-top: 20px;
+    max-height: 93px;
+  }
+  &__container__listbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 65px;
+    row-gap: 25px;
+    padding-left: 7%;
+  }
+  &__number {
+    display: flex;
+    justify-content: flex-end;
+    color: #1B1B1B;
+    font-family: Anton, sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    padding-right: 7%;
+  }
+  &__selection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    column-gap: 15px;
+  }
   .listbox {
-    background: bisque;
+    background: white;
     width: 195px;
     max-height: 250px;
     border-radius: 11px;
     font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
     overflow: hidden;
+    z-index: 10;
     &__head {
       display: flex;
       flex-direction: row;
@@ -97,7 +141,7 @@ $black : #1B1B1B;
     }
     &__searchbar {
       position: relative;
-      display: flex;
+      display: none; //cache la barre de recherche en attente de l'evenement click
       flex-direction: row;
       align-items: center;
       padding: 0 17px 15px 17px;
@@ -117,7 +161,7 @@ $black : #1B1B1B;
       }
     }
     &__list {
-      display: flex;
+      display: none; //cache la barre de recherche en attente de l'evenement click
       flex-direction: column;
       flex-wrap: nowrap;
       max-height: 160px;
@@ -127,9 +171,23 @@ $black : #1B1B1B;
       /* IE and Edge */
       scrollbar-width: none;
       padding: 0 0 10px 0;
-      span {
+      &__item {
         padding: 6px 17px 6px 17px;
-
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &.selected {
+          background-color: $yellow;
+          &:hover {
+            font-weight: 700;
+            i {
+              display: block; //affiche la croix de suppression de filtre
+            }
+          }
+        }
+        i {
+          display: none; //cache la croix de suppression de filtre
+        }
         &:hover {
           background-color: $yellow;
         }
@@ -138,33 +196,58 @@ $black : #1B1B1B;
     }
 
   }
+  &__selection {
+    display: inline-flex;
+    row-gap: 15px;
+    column-gap: 15px;
+    padding: 0 7%;
+    &__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 60px;
+      background-color: $yellow;
+      border-radius: 10px;
+      padding: 17px 18px;
+      font-family: Manrope, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      i {
+        font-size: 18px;
+      }
+      &:hover {
+        cursor: pointer;
+        font-weight: 700;
+      }
+    }
+  }
 }
+//cache la scrollbar des listes de filtres
 .listbox__list::-webkit-scrollbar {
   /* Hide scrollbar for Chrome, Safari and Opera */
   display: none;
 }
+
 //Recipes cards
 .recipe {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 45px;
+  grid-row-gap: 65px;
   background: #EDEDED;
-  padding-top: 50px;
   padding-left: 7%;
   padding-right: 7%;
-  gap: 3%;
   &__card {
     display: flex;
     position: relative;
     flex-direction: column;
-    flex: 1 0 calc(33% - 50px);
+    flex: 1 1 calc(33.33% - 40px);
     background: #FFFFFF;
     border-radius: 21px;
     height: auto;
-    width: auto;
     box-sizing: border-box;
     overflow: hidden;
     font-family: Manrope, sans-serif;
+    box-shadow: 0 4px 34px 30px rgba(0, 0, 0, 0.04);
     &__time {
       position: absolute;
       background: $yellow;
@@ -199,6 +282,15 @@ $black : #1B1B1B;
         text-transform: uppercase;
         padding: 30px 0 15px 0;
       }
+      &__description {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 87px;
+        min-height: 87px;//taille minimum defini pour que les box et la meme size
+      }
       &__ingredients {
         display: flex;
         flex-wrap: wrap;
@@ -216,7 +308,6 @@ $black : #1B1B1B;
     }
   }
 }
-
 
 
 //Footer perso

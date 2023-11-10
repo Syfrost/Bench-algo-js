@@ -5,11 +5,18 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .header {
   display: flex;
   flex-direction: column;
-  background: url("../assets/header.png");
-  max-width: 1440px;
+  background: url("../assets/header.png") no-repeat;
+  background-size: cover;
+  object-fit: cover;
   height: 667px;
 }
 .header__logo {
@@ -58,28 +65,63 @@
   border: none;
   margin-left: -60px;
 }
-.header__search__btn img {
-  width: 28px;
-  height: 28px;
-  margin: 0;
+.header__search__btn:hover {
+  cursor: pointer;
+  background-color: #FFD15B;
 }
 .header__search__btn :focus {
   outline: none;
 }
 
 .filter {
+  background: #EDEDED;
+  padding-bottom: 25px;
+}
+.filter__container {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 25px;
+  padding-top: 20px;
+  max-height: 93px;
+}
+.filter__container__listbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 25px;
+  column-gap: 65px;
+  row-gap: 25px;
+  padding-left: 7%;
+}
+.filter__number {
+  display: flex;
+  justify-content: flex-end;
+  color: #1B1B1B;
+  font-family: Anton, sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  padding-right: 7%;
+}
+.filter__selection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  column-gap: 15px;
 }
 .filter .listbox {
-  background: bisque;
+  background: white;
   width: 195px;
   max-height: 250px;
   border-radius: 11px;
   font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
   overflow: hidden;
+  z-index: 10;
 }
 .filter .listbox__head {
   display: flex;
@@ -93,7 +135,7 @@
 }
 .filter .listbox__searchbar {
   position: relative;
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: center;
   padding: 0 17px 15px 17px;
@@ -112,7 +154,7 @@
   color: rgb(202, 202, 202);
 }
 .filter .listbox__list {
-  display: flex;
+  display: none;
   flex-direction: column;
   flex-wrap: nowrap;
   max-height: 160px;
@@ -123,11 +165,50 @@
   scrollbar-width: none;
   padding: 0 0 10px 0;
 }
-.filter .listbox__list span {
+.filter .listbox__list__item {
   padding: 6px 17px 6px 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.filter .listbox__list span:hover {
+.filter .listbox__list__item.selected {
   background-color: #FFD15B;
+}
+.filter .listbox__list__item.selected:hover {
+  font-weight: 700;
+}
+.filter .listbox__list__item.selected:hover i {
+  display: block;
+}
+.filter .listbox__list__item i {
+  display: none;
+}
+.filter .listbox__list__item:hover {
+  background-color: #FFD15B;
+}
+.filter__selection {
+  display: inline-flex;
+  row-gap: 15px;
+  column-gap: 15px;
+  padding: 0 7%;
+}
+.filter__selection__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+  background-color: #FFD15B;
+  border-radius: 10px;
+  padding: 17px 18px;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+.filter__selection__tag i {
+  font-size: 18px;
+}
+.filter__selection__tag:hover {
+  cursor: pointer;
+  font-weight: 700;
 }
 
 .listbox__list::-webkit-scrollbar {
@@ -136,27 +217,26 @@
 }
 
 .recipe {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 45px;
+  grid-row-gap: 65px;
   background: #EDEDED;
-  padding-top: 50px;
   padding-left: 7%;
   padding-right: 7%;
-  gap: 3%;
 }
 .recipe__card {
   display: flex;
   position: relative;
   flex-direction: column;
-  flex: 1 0 calc(33% - 50px);
+  flex: 1 1 calc(33.33% - 40px);
   background: #FFFFFF;
   border-radius: 21px;
   height: auto;
-  width: auto;
   box-sizing: border-box;
   overflow: hidden;
   font-family: Manrope, sans-serif;
+  box-shadow: 0 4px 34px 30px rgba(0, 0, 0, 0.04);
 }
 .recipe__card__time {
   position: absolute;
@@ -192,6 +272,15 @@
   letter-spacing: 0.0675rem;
   text-transform: uppercase;
   padding: 30px 0 15px 0;
+}
+.recipe__card__content__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 87px;
+  min-height: 87px;
 }
 .recipe__card__content__ingredients {
   display: flex;

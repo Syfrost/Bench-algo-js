@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
-    <title>Title</title>
+    <title>Les petits plats</title>
 </head>
 <body>
     <header class="header">
@@ -16,70 +16,61 @@
         <h2 class="header__subtitle">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h2>
         <label class="header__search">
             <input class="header__search__bar" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
-            <button class="header__search__btn"><img src="assets/loop.svg"></button>
+            <button class="header__search__btn">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="9.5" stroke="white"/>
+                    <line x1="18.3536" y1="18.6464" x2="27.3536" y2="27.6464" stroke="white"/>
+                </svg>
+            </button>
         </label>
     </header>
     <main>
         <section class="filter">
-            <div class="listbox">
-                <div class="listbox__head">
-                    <span class="listbox__head__title">Ingrédients</span>
-                    <i class="fa-solid fa-chevron-down fa-rotate-180"></i>
-                </div>
-                <div class="listbox__searchbar">
-                    <input class="listbox__searchbar__item" id="search-ingredient" type="text">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </div>
-                <div class="listbox__list">
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">Fruits teest test</span>
-                    <span class="listbox__list__item">coco</span>
-                </div>
+            <div class="filter__container">
+                <div class="filter__container__listbox">
+                    <div class="listbox">
+                        <div class="listbox__head">
+                            <span class="listbox__head__title">Ingrédients</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="listbox__searchbar">
+                            <input class="listbox__searchbar__item" id="search-ingredient" type="text">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </div>
+                        <div class="listbox__list" id="ingredient_list">
+                        </div>
+                    </div>
 
+                    <div class="listbox">
+                        <div class="listbox__head">
+                            <span class="listbox__head__title">Appareils</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="listbox__searchbar">
+                            <input class="listbox__searchbar__item" id="search-appareil" type="text">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </div>
+                        <div class="listbox__list" id="appliance_list">
+                        </div>
+                    </div>
 
+                    <div class="listbox">
+                        <div class="listbox__head">
+                            <span class="listbox__head__title">Ustensiles</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="listbox__searchbar">
+                            <input class="listbox__searchbar__item" id="search-ustensiles" type="text">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </div>
+                        <div class="listbox__list" id="ustensils_list">
+                        </div>
+                    </div>
+                </div>
+                <span class="filter__number">Rechercher</span>
             </div>
-            <div class="listbox">
-                <div class="listbox__head">
-                    <span class="listbox__head__title">Appareils</span>
-                    <i class="fa-solid fa-chevron-down fa-rotate-180"></i>
-                </div>
-                <div class="listbox__searchbar">
-                    <input class="listbox__searchbar__item" id="search-appareil" type="text">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </div>
-                <div class="listbox__list">
-                    <span class="listbox__list__item">Fruits teest test</span>
-                </div>
+            <div id="all__filter__selection" class="filter__selection">
             </div>
-            <div class="listbox">
-                <div class="listbox__head">
-                    <span class="listbox__head__title">Ustensiles</span>
-                    <i class="fa-solid fa-chevron-down fa-rotate-180"></i>
-                </div>
-                <div class="listbox__searchbar">
-                    <input class="listbox__searchbar__item" id="search-ustensiles" type="text">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </div>
-                <div class="listbox__list">
-                    <span class="listbox__list__item">Fruits teest test</span>
-                </div>
-            </div>
-            <span class="filter__number">Rechercher</span>
         </section>
         <section class="recipe">
             <article class="recipe__card fade-in-recipe" id="1" style="--fadeinDelayRecipe: 0.6000000000000001s;">
@@ -183,5 +174,7 @@
     <footer>
         <a href="https://github.com/Syfrost/Bench-algo-js">OpenClassrooms - P7 - GEORGES Cédric</a>
     </footer>
+    <script src="data/recipes.js"></script>
+    <script src="scripts/utils/sort.js"></script>
 </body>
 </html>
