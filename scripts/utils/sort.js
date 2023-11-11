@@ -95,30 +95,23 @@ function handleItemClick(event) {
 }
 
 const filterByInputText = () => {
-    let filteredRecipes = []; // Tableau vide pour stocker les recettes filtrées
+    let filteredRecipes = []; //Tableau vide pour stocker les recettes filtrées
     const lowerCaseInputText = inputText.toLowerCase();
 
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
+    recipes.forEach(recipe => {
         const lowerCaseRecipeName = recipe.name.toLowerCase();
         const lowerCaseRecipeDescription = recipe.description.toLowerCase();
+        // Chaîne avec tous les noms d'ingrédients en minuscules
+        const ingredientsText = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
 
-        let ingredientMatch = false;
-        for (let j = 0; j < recipe.ingredients.length; j++) {
-            if (recipe.ingredients[j].ingredient.toLowerCase().includes(lowerCaseInputText)) {
-                ingredientMatch = true;
-                break; // Arrête la boucle dès qu'un ingrédient correspond
-            }
-        }
-
-        if (lowerCaseRecipeName.includes(lowerCaseInputText) ||
-            lowerCaseRecipeDescription.includes(lowerCaseInputText) ||
-            ingredientMatch) {
+        if (lowerCaseRecipeName.indexOf(lowerCaseInputText) !== -1 ||
+            ingredientsText.indexOf(lowerCaseInputText) !== -1 ||
+            lowerCaseRecipeDescription.indexOf(lowerCaseInputText) !== -1) {
             const recipeCard = createRecipeCard(recipe);
             recipeSection.appendChild(recipeCard);
             filteredRecipes.push(recipe); // Ajoute la recette au tableau filtré
         }
-    }
+    });
 
     return filteredRecipes;
 };
