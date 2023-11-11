@@ -95,26 +95,28 @@ function handleItemClick(event) {
 }
 
 const filterByInputText = () => {
-    let filteredRecipes = []; //Tableau vide pour stocker les recettes filtrées
+    let filteredRecipes = []; // Tableau vide pour stocker les recettes filtrées
     const lowerCaseInputText = inputText.toLowerCase();
 
-    recipes.forEach(recipe => {
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
         const lowerCaseRecipeName = recipe.name.toLowerCase();
         const lowerCaseRecipeDescription = recipe.description.toLowerCase();
         // Chaîne avec tous les noms d'ingrédients en minuscules
         const ingredientsText = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
 
         if (lowerCaseRecipeName.indexOf(lowerCaseInputText) !== -1 ||
-            lowerCaseRecipeDescription.indexOf(lowerCaseInputText) !== -1 ||
-            ingredientsText.indexOf(lowerCaseInputText) !== -1) {
+            ingredientsText.indexOf(lowerCaseInputText) !== -1 ||
+            lowerCaseRecipeDescription.indexOf(lowerCaseInputText) !== -1) {
             const recipeCard = createRecipeCard(recipe);
             recipeSection.appendChild(recipeCard);
             filteredRecipes.push(recipe); // Ajoute la recette au tableau filtré
         }
-    });
+    }
 
     return filteredRecipes;
 };
+
 
 function displayTags(data) {
     //Creation des array sans doublons
