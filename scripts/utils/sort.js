@@ -263,18 +263,15 @@ function displayAllRecipes(data) {
     const filterNumberElement = document.querySelector('.filter__number');
     filterNumberElement.textContent = `${data.length} recettes`;
 
-    for (let i = 0; i < data.length; i++) {
-        const recipe = data[i];
+    data.forEach((recipe, i) => {
         const recipeCard = createRecipeCard(recipe);
         recipeSection.appendChild(recipeCard);
 
-        // Ajouter un délai avant d'ajouter la carte suivante
-        if (i < data.length - 1) {
+        if (i < data.length - 1) { //delay entre chaque ajout de carte
             setTimeout(() => {
-                // Ajouter ici le code à exécuter après le délai
             }, delay);
         }
-    }
+    });
 }
 
 
