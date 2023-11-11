@@ -101,8 +101,12 @@ const filterByInputText = () => {
     recipes.forEach(recipe => {
         const lowerCaseRecipeName = recipe.name.toLowerCase();
         const lowerCaseRecipeDescription = recipe.description.toLowerCase();
+        // Chaîne avec tous les noms d'ingrédients en minuscules
+        const ingredientsText = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
 
-        if (lowerCaseRecipeName.indexOf(lowerCaseInputText) !== -1 || lowerCaseRecipeDescription.indexOf(lowerCaseInputText) !== -1) {
+        if (lowerCaseRecipeName.indexOf(lowerCaseInputText) !== -1 ||
+            lowerCaseRecipeDescription.indexOf(lowerCaseInputText) !== -1 ||
+            ingredientsText.indexOf(lowerCaseInputText) !== -1) {
             const recipeCard = createRecipeCard(recipe);
             recipeSection.appendChild(recipeCard);
             filteredRecipes.push(recipe); // Ajoute la recette au tableau filtré
