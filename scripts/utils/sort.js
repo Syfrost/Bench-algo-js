@@ -95,23 +95,37 @@ function handleItemClick(event) {
 }
 
 const filterByInputText = () => {
-    let filteredRecipes = []; //Tableau vide pour stocker les recettes filtrées
+    let filteredRecipes = []; // Optimisation possible avec préallocation si le nombre de recettes est connu
     const lowerCaseInputText = inputText.toLowerCase();
 
-    recipes.forEach(recipe => {
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
         const lowerCaseRecipeName = recipe.name.toLowerCase();
         const lowerCaseRecipeDescription = recipe.description.toLowerCase();
-        // Chaîne avec tous les noms d'ingrédients en minuscules
-        const ingredientsText = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
 
-        if (lowerCaseRecipeName.indexOf(lowerCaseInputText) !== -1 ||
-            ingredientsText.indexOf(lowerCaseInputText) !== -1 ||
-            lowerCaseRecipeDescription.indexOf(lowerCaseInputText) !== -1) {
-            const recipeCard = createRecipeCard(recipe);
-            recipeSection.appendChild(recipeCard);
-            filteredRecipes.push(recipe); // Ajoute la recette au tableau filtré
+        if (lowerCaseRecipeName.includes(lowerCaseInputText)) {
+            filteredRecipes.push(recipe);
+            continue;
         }
-    });
+
+        let ingredientMatch = false;
+        for (let ingredient of recipe.ingredients) {
+            if (ingredient.ingredient.toLowerCase().includes(lowerCaseInputText)) {
+                ingredientMatch = true;
+                break;
+            }
+        }
+
+        if (ingredientMatch || lowerCaseRecipeDescription.includes(lowerCaseInputText)) {
+            filteredRecipes.push(recipe);
+        }
+    }
+
+    // Création des cartes de recettes après la filtration pour minimiser les manipulations du DOM
+    for (let recipe of filteredRecipes) {
+        const recipeCard = createRecipeCard(recipe);
+        recipeSection.appendChild(recipeCard);
+    }
 
     return filteredRecipes;
 };
