@@ -114,9 +114,21 @@ const filterByInputText = () => {
         }
     }
 
+    // Vérifie si le tableau filteredRecipes est vide
+    if (filteredRecipes.length === 0) {
+        displayError(inputText);
+    }
     return filteredRecipes;
 };
 
+function displayError(inputText) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'recipe__error';
+    errorDiv.textContent = `Aucune recette ne contient ‘${inputText}’ vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
+
+    const recipeSection = document.querySelector('.recipe');
+    recipeSection.appendChild(errorDiv);
+}
 
 function displayTags(data) {
     //Creation des array sans doublons
