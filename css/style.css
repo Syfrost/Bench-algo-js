@@ -217,6 +217,7 @@ body {
 }
 
 .recipe {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 45px;
@@ -224,6 +225,14 @@ body {
   background: #EDEDED;
   padding-left: 7%;
   padding-right: 7%;
+}
+.recipe__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1/-1;
+  height: 100px;
+  font-family: Manrope, sans-serif;
 }
 .recipe__card {
   display: flex;

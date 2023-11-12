@@ -121,14 +121,28 @@ const filterByInputText = () => {
         }
     }
 
-    // Création des cartes de recettes après la filtration pour minimiser les manipulations du DOM
-    for (let recipe of filteredRecipes) {
-        const recipeCard = createRecipeCard(recipe);
-        recipeSection.appendChild(recipeCard);
+    // Vérifie si le tableau filteredRecipes est vide
+    if (filteredRecipes.length === 0) {
+        displayError(inputText);
+    } else {
+        // Création des cartes de recettes après la filtration pour minimiser les manipulations du DOM
+        for (let recipe of filteredRecipes) {
+            const recipeCard = createRecipeCard(recipe);
+            recipeSection.appendChild(recipeCard);
+        }
     }
 
     return filteredRecipes;
 };
+
+function displayError(inputText) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'recipe__error';
+    errorDiv.textContent = `Aucune recette ne contient ‘${inputText}’ vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
+
+    const recipeSection = document.querySelector('.recipe');
+    recipeSection.appendChild(errorDiv);
+}
 
 function displayTags(data) {
     //Creation des array sans doublons
