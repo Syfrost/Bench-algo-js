@@ -98,8 +98,7 @@ const filterByInputText = () => {
     let filteredRecipes = []; // Tableau vide pour stocker les recettes filtrées
     const lowerCaseInputText = inputText.toLowerCase();
 
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
+    recipes.forEach(recipe => {
         const lowerCaseRecipeName = recipe.name.toLowerCase();
         const lowerCaseRecipeDescription = recipe.description.toLowerCase();
         // Chaîne avec tous les noms d'ingrédients en minuscules
@@ -112,7 +111,7 @@ const filterByInputText = () => {
             recipeSection.appendChild(recipeCard);
             filteredRecipes.push(recipe); // Ajoute la recette au tableau filtré
         }
-    }
+    });
 
     // Vérifie si le tableau filteredRecipes est vide
     if (filteredRecipes.length === 0) {
